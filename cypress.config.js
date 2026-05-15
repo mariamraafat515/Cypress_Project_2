@@ -11,19 +11,30 @@ const {
 } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
 module.exports = defineConfig({
-  retries: 2,
+
+  retries: {
+    runMode: 2,
+    openMode: 0,
+  },
 
   defaultCommandTimeout: 10000,
   pageLoadTimeout: 30000,
+
   viewportWidth: 1280,
   viewportHeight: 720,
 
+  chromeWebSecurity: false,
+
+  video: false,
+
   e2e: {
+
     baseUrl: "https://practicesoftwaretesting.com",
 
     specPattern: "cypress/e2e/features/*.feature",
 
     async setupNodeEvents(on, config) {
+
       await addCucumberPreprocessorPlugin(on, config);
 
       on(
