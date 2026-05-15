@@ -1,8 +1,7 @@
 Cypress.Commands.add('openWebsite', () => {
-
-    cy.openWebsite()
+    cy.visit('https://practicesoftwaretesting.com/', {
         failOnStatusCode: false
-
+    })
 })
 
 Cypress.Commands.add('searchProduct', (product) => {

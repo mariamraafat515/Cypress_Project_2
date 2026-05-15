@@ -4,7 +4,9 @@ import HomePage from '../../pages/HomePage';
 
 Given('user opens the website', () => {
 
-    HomePage.visit()
+    Given('I open the website', () => {
+    cy.openWebsite()
+})
 
 })
 
