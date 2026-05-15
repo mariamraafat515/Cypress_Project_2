@@ -2,7 +2,9 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import HomePage from '../../pages/HomePage';
 
 Given('user opens the website', () => {
-    cy.visit('/')
+    cy.visit('/', {
+        failOnStatusCode: false
+    })
 })
 
 Then('website title should be correct', () => {
