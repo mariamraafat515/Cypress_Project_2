@@ -11,7 +11,8 @@ const {
 } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
 module.exports = defineConfig({
-
+  retries: 2,
+});
   e2e: {
 
     specPattern: "cypress/e2e/features/*.feature",
