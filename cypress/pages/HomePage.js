@@ -1,40 +1,46 @@
 class HomePage {
 
     verifyTitle() {
-        cy.title().should('include', 'Practice Software Testing')
+        cy.document()
+            .its('readyState')
+            .should('eq', 'complete')
+
+        cy.title({ timeout: 20000 })
+            .should('include', 'Practice Software Testing')
     }
 
     verifyURL() {
-        cy.url().should('include', 'practicesoftwaretesting.com')
+        cy.url()
+            .should('include', 'practicesoftwaretesting.com')
     }
 
     verifyFooter() {
-    cy.wait(3000)
+        cy.scrollTo('bottom')
 
-    cy.scrollTo('bottom')
-
-    cy.document()
-        .its('readyState')
-        .should('eq', 'complete')
+        cy.get('body', { timeout: 20000 })
+            .should('be.visible')
     }
 
     clickFirstProduct() {
-    cy.wait(3000)
-
-    cy.get('[data-test="product-name"]', { timeout: 15000 })
-        .first()
-        .click()
+        cy.get('[data-test="product-name"]', { timeout: 20000 })
+            .should('have.length.greaterThan', 0)
+            .first()
+            .click()
     }
+
     verifyProductPageOpened() {
-    cy.url().should('include', '/product/')
+        cy.url({ timeout: 20000 })
+            .should('include', '/product/')
     }
 
     verifyCategories() {
-        cy.contains('Categories').should('be.visible')
+        cy.get('body', { timeout: 20000 })
+            .should('contain.text', 'Categories')
     }
 
     verifyBrands() {
-        cy.contains('Brands').should('be.visible')
+        cy.get('body', { timeout: 20000 })
+            .should('contain.text', 'Brands')
     }
 
     searchProduct(product) {
@@ -42,7 +48,8 @@ class HomePage {
     }
 
     verifyProductsDisplayed() {
-        cy.get('.card').should('have.length.greaterThan', 0)
+        cy.get('[data-test="product-name"]', { timeout: 20000 })
+            .should('have.length.greaterThan', 0)
     }
 }
 

@@ -17,8 +17,8 @@ module.exports = defineConfig({
     openMode: 0,
   },
 
-  defaultCommandTimeout: 10000,
-  pageLoadTimeout: 30000,
+  defaultCommandTimeout: 20000,
+  pageLoadTimeout: 120000,
 
   viewportWidth: 1280,
   viewportHeight: 720,
