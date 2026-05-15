@@ -5,6 +5,8 @@ Given('user opens the website', () => {
     cy.visit('/', {
         failOnStatusCode: false
     })
+    // ✅ Add this line — waits for Angular app to fully load
+    cy.get('app-root', { timeout: 60000 }).should('exist')
 })
 
 Then('website title should be correct', () => {
