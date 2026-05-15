@@ -2,11 +2,10 @@ import './commands'
 
 beforeEach(() => {
     cy.visit('/', {
-        failOnStatusCode: false,
-        timeout: 120000
+        failOnStatusCode: false
     })
 
-    cy.document()
-        .its('readyState')
-        .should('eq', 'complete')
+    cy.contains('Practice Software Testing', {
+        timeout: 60000
+    }).should('be.visible')
 })
