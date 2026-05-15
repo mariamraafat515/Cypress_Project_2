@@ -5,6 +5,8 @@ Given('user opens the website', () => {
     cy.visit('/', {
         failOnStatusCode: false
     })
+    // ✅ Replace app-root check with this
+    cy.url().should('include', 'practicesoftwaretesting.com')
     // ✅ Add this line — waits for Angular app to fully load
     cy.get('app-root', { timeout: 60000 }).should('exist')
 })
