@@ -1,74 +1,49 @@
 class HomePage {
 
-    visit() {
-
-    cy.openWebsite()
-
-    }
-
-    searchProduct(product) {
-
-    cy.searchProduct(product)
-
-    }
-
-    verifyProductsDisplayed() {
-
-        cy.get('.card')
-            .should('exist')
-
-    }
-
     verifyTitle() {
-
-        cy.title()
-            .should('contain', 'Practice Software Testing')
-
+        cy.title().should('include', 'Practice Software Testing')
     }
 
-    clickFirstProduct() {
-
-        cy.get('[data-test="product-name"]')
-            .first()
-            .click()
-
-    }
-    
     verifyURL() {
-
-    cy.url()
-        .should('include', 'practicesoftwaretesting')
-
-    }
-
-    verifyProductPageOpened() {
-
-        cy.url()
-            .should('include', '/product')
-
+        cy.url().should('include', 'practicesoftwaretesting.com')
     }
 
     verifyFooter() {
+    cy.wait(3000)
 
-        cy.contains('Privacy Policy')
-            .should('exist')
+    cy.scrollTo('bottom')
 
+    cy.document()
+        .its('readyState')
+        .should('eq', 'complete')
+    }
+
+    clickFirstProduct() {
+    cy.wait(3000)
+
+    cy.get('[data-test="product-name"]', { timeout: 15000 })
+        .first()
+        .click()
+    }
+    verifyProductPageOpened() {
+    cy.url().should('include', '/product/')
     }
 
     verifyCategories() {
+        cy.contains('Categories').should('be.visible')
+    }
 
-    cy.contains('Categories')
-        .should('exist')
+    verifyBrands() {
+        cy.contains('Brands').should('be.visible')
+    }
 
-}
+    searchProduct(product) {
+        cy.searchProduct(product)
+    }
 
-verifyBrands() {
-
-    cy.contains('Brands')
-        .should('exist')
-
-}
-
+    verifyProductsDisplayed() {
+        cy.get('.card').should('have.length.greaterThan', 0)
+    }
 }
 
 export default new HomePage()

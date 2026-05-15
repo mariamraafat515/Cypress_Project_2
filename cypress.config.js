@@ -13,7 +13,14 @@ const {
 module.exports = defineConfig({
   retries: 2,
 
+  defaultCommandTimeout: 10000,
+  pageLoadTimeout: 30000,
+  viewportWidth: 1280,
+  viewportHeight: 720,
+
   e2e: {
+    baseUrl: "https://practicesoftwaretesting.com",
+
     specPattern: "cypress/e2e/features/*.feature",
 
     async setupNodeEvents(on, config) {
