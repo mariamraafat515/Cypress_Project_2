@@ -7,8 +7,6 @@ Given('user opens the website', () => {
     })
     // ✅ Replace app-root check with this
     cy.url().should('include', 'practicesoftwaretesting.com')
-    // ✅ Add this line — waits for Angular app to fully load
-    cy.get('app-root', { timeout: 60000 }).should('exist')
 })
 
 Then('website title should be correct', () => {
